@@ -167,7 +167,7 @@ const App = () =>
       dispatch( { type: 'LOGOUT' } );
 
     },
-    signUp: async ( lookingfor, ageFrom, ageUpto, City, incomeFrom, incomeUpto, heightFrom, heightUpto, weightFrom, weightUpto, Loccupation, Lreligion, LmedicalStatus, Lkids, Lcountry, jstate, Fname, Lname, Phone, age, Gender, Occupation, Religion, MedicalStatus, KidsNum, Country, jsstate, city, MonthlyIncome, height, weight, Pass, CPass, PassHint, base64, fileName, base642, fileName2, imgUri, imgUri2 ) =>
+    signUp: async ( username, Email, password, Cpassword) =>
     {
       /* setUserToken("fgkj");
       setIsLoading(false); */
@@ -182,11 +182,11 @@ const App = () =>
             'Content-Type': 'application/json',
           },
           body: JSON.stringify( {
-            'username': lookingfor,
-            'ageFrom': ageFrom,
-            'ageUpto': ageUpto,
-            'City': City,
-            'incomeFrom': incomeFrom,
+            'username': username,
+            'email': Email,
+            'password': password,
+            'Cpassword': Cpassword,
+            'registerDate': date,
 
           } )
         } ).then( ( response ) => response.json() )
@@ -215,87 +215,6 @@ const App = () =>
     },
 
 
-  signUpA: async ( name, Email, Phone, Age, City, SubCity, password, cpassword, Type ) =>
-    {
-      /* setUserToken("fgkj");
-      setIsLoading(false); */
-      let userToken;
-      userToken = null;
-      if ( name == "" )
-      {
-        alert( "Please Check username Fields is not empity!" )
-      } else if ( Email == "" )
-      {
-        alert( "Please Check Email Fields is not empity!" );
-      }else if ( City == "" )
-      {
-        alert( "Please Check Address City Fields is not empity!" );
-      } else if ( SubCity == "" )
-      {
-        alert( "Please Check Address Sub-City or Wereda Fields is not empity!" );
-      }  else if ( Phone == "" )
-      {
-        alert( "Please Check phone number Fields is not empity!" );
-      } else if ( Age == "" )
-      {
-        alert( "Please Check Age Fields is not empity!" );
-      } else if ( Email == "" )
-      {
-        alert( "Please Check email Fields is not empity!" );
-      } else if ( password == "" )
-      {
-        alert( "Please Check password Fields is not empity!" );
-      } else if ( cpassword == "" )
-      {
-        alert( "Please Check confirm password Fields is not empity!" );
-      } else if ( cpassword !== password  )
-      {
-        alert( "Please Check password and confirm password is not match!" );
-      } else
-      {
-
-        fetch( 'http://businesslunch.mirtmirt.com/AddUsers.php', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify( {
-            'name': name,
-            'Email': Email,
-            //'DoB': DoB,
-            'Phone': Phone,
-            //'Gender': Gender,
-            'Age': Age,
-            //'MaritalStatus': MaritalStatus,
-            'City': City,
-            'SubCity': SubCity,
-            'password': password,
-            'Type': Type,
-
-          } )
-        } ).then( ( response ) => response.json() )
-          .then( ( responseJson ) =>
-          {
-
-            //userToken = name;
-            //AsyncStorage.setItem( 'userToken', JSON.stringify( { userToken: userToken } ) );
-            //dispatch( { type: 'REGISTER', id: password, token: userToken } );
-            alert(responseJson);
-          } )
-          .catch( ( error ) =>
-          {
-            //console.error( error );
-            alert( "No Internet / User already Existed!" )
-          } );
-
-        //alert("user Name : "+userName +" : Date of Birth : "+DoB +": userToken : "+userToken);
-
-      }
-
-
-
-    },
   } ), [] );
 
   useEffect( () =>
