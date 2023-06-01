@@ -21,6 +21,7 @@ import {
 import { Searchbar } from 'react-native-paper';
 //import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
 //import Select from 'react-native-select-dropdown';
 import themeContext from '../screens/themeContext';
 import languageContext from '../screens/languageContext';
@@ -54,11 +55,18 @@ import Home from '../screens/Home';
 import MultipleImages from '../screens/multipleImages'
 import MultipleImagesHandler from '../screens/multipleImagesHandler'
 import Abouts from '../screens/Abouts';
-import Programs from '../screens/Programs';
+import Following from '../screens/following';
 import Profile from '../screens/Profile';
-import Services from '../screens/Services';
-import Main from '../screens/main';
+import Likes from '../screens/likes';
+import Groups from '../screens/groups';
+import Follower from '../screens/follower';
+import Photo from '../screens/photo';
+import Video from '../screens/video';
+import Music from '../screens/music';
+import Radio from '../screens/radio';
+import Friends from '../screens/Friends';
 import Allstyle from '../screens/allstyle';
+
 
 
 {/*
@@ -114,7 +122,7 @@ const scheme = useColorScheme();
         </Stack.Navigator>
     );
 }
-function MainStackScreen ({navigation, route})
+function GroupsStackScreen ({navigation, route})
 {
 const scheme = useColorScheme();
 
@@ -126,7 +134,7 @@ const scheme = useColorScheme();
     const userDataToken = useContext(userContext);
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Main" component={Main} options={{
+            <Stack.Screen name="Groups" component={Groups} options={{
 
                 headerTitle: null,
                 headerShown: false,
@@ -136,7 +144,7 @@ const scheme = useColorScheme();
     );
 }
 
-function ServicesStackScreen ({navigation, route})
+function LikesStackScreen ({navigation, route})
 {
     const scheme = useColorScheme();
 
@@ -148,7 +156,7 @@ function ServicesStackScreen ({navigation, route})
     const userDataToken = useContext(userContext);
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Services" component={Services} options={{
+            <Stack.Screen name="Likes" component={Likes} options={{
 
                 headerTitle: null,
                 headerShown: false,
@@ -157,7 +165,7 @@ function ServicesStackScreen ({navigation, route})
     );
 }
 
-function ProgramsStackScreen ({navigation, route})
+function FollowingStackScreen ({navigation, route})
 {
 const scheme = useColorScheme();
 
@@ -169,7 +177,7 @@ const scheme = useColorScheme();
     const userDataToken = useContext(userContext);
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Programs" component={Programs} options={{
+            <Stack.Screen name="Following" component={Following} options={{
 
                 headerTitle: null,
                 headerShown: false,
@@ -179,6 +187,114 @@ const scheme = useColorScheme();
     );
 }
 
+function FriendsStackScreen ({navigation, route})
+{
+const scheme = useColorScheme();
+
+    const Theme = useContext(themeContext);
+
+    const language = useContext(languageContext);
+    const header = useContext(headerContext);
+
+    const userDataToken = useContext(userContext);
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Friends" component={Friends} options={{
+
+                headerTitle: null,
+                headerShown: false,
+            }} />
+
+        </Stack.Navigator>
+    );
+}
+
+function FollowerStackScreen ({navigation, route})
+{
+const scheme = useColorScheme();
+
+    const Theme = useContext(themeContext);
+
+    const language = useContext(languageContext);
+    const header = useContext(headerContext);
+
+    const userDataToken = useContext(userContext);
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Follower" component={Follower} options={{
+
+                headerTitle: null,
+                headerShown: false,
+            }} />
+
+        </Stack.Navigator>
+    );
+}
+
+function PhotoStackScreen ({navigation, route})
+{
+const scheme = useColorScheme();
+
+    const Theme = useContext(themeContext);
+
+    const language = useContext(languageContext);
+    const header = useContext(headerContext);
+
+    const userDataToken = useContext(userContext);
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Photo" component={Photo} options={{
+
+                headerTitle: null,
+                headerShown: false,
+            }} />
+
+        </Stack.Navigator>
+    );
+}
+function MusicStackScreen ({navigation, route})
+{
+const scheme = useColorScheme();
+
+    const Theme = useContext(themeContext);
+
+    const language = useContext(languageContext);
+    const header = useContext(headerContext);
+
+    const userDataToken = useContext(userContext);
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Music" component={Music} options={{
+
+                headerTitle: null,
+                headerShown: false,
+            }} />
+
+        </Stack.Navigator>
+    );
+}
+
+function VideoStackScreen ({navigation, route})
+{
+const scheme = useColorScheme();
+
+    const Theme = useContext(themeContext);
+
+    const language = useContext(languageContext);
+    const header = useContext(headerContext);
+
+    const userDataToken = useContext(userContext);
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Video" component={Video} options={{
+
+                headerTitle: null,
+                headerShown: false,
+            }} />
+
+        </Stack.Navigator>
+    );
+}
 
 
 function AboutsStackScreen ({navigation, route})
@@ -285,6 +401,234 @@ export default function navigation ( props )
 
                     />
             </View>
+            <View style={{
+
+                    flexDirection: 'row',
+                    //textAlign: 'center',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    top: -30,
+
+                }}>
+                <ScrollView horizontal>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="folder-images"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="folder-music"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="folder-video"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="game-controller"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="location"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="megaphone"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="quote"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="shopping-cart"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                    <View style={{
+                            backgroundColor: 'grey',
+                            padding: 10,
+                            marginEnd: 10,
+                            marginStart: 10,
+                            borderRadius: 20,
+                            borderWeight: 1,}}>
+                        <Entypo
+
+                        name="soundcloud"
+                        style={{
+
+                            color: 'red',
+                            textAlign: 'center',
+                            fontWeight: '400',
+                            fontSize: 48,
+                            //top: -50,
+
+                        }}
+                    />
+                    <Text style={{color: '#fff'}}>
+                        Upload
+                    </Text>
+                    </View>
+                </ScrollView>
+            </View>
 
             </Animatable.View>
 
@@ -292,7 +636,10 @@ export default function navigation ( props )
             <Tab.Navigator
                 screenOptions={( { route } ) => ( {
                 tabBarLabelStyle: { fontSize: 8 },
-                //tabBarScrollEnabled: true,
+                lazy: true,
+                //swipeEnabled: false,
+                tabBarScrollEnabled: true,
+                tabBarItemStyle: { width: 90 },
                 tabBarStyle: { backgroundColor: 'white' },
                 tabBarActiveTintColor: 'red',
                 tabBarInactiveTintColor: 'black',
@@ -308,7 +655,10 @@ export default function navigation ( props )
 			if ( route.name === 'Timeline' || route.name === 'Timeline')
                         {
                             iconName = focused ? 'apps' : 'apps-outline';
-                        }else if ( route.name === 'Groups' || route.name === 'Groups')
+                        } else if ( route.name === 'Friends' || route.name === 'Friends')
+                        {
+                            iconName = focused ? 'person-sharp' : 'person-outline';
+                        } else if ( route.name === 'Groups' || route.name === 'Groups')
                         {
                             iconName = focused ? 'people-sharp' : 'people-outline';
                         } else if ( route.name === 'Likes' || route.name === 'Likes')
@@ -317,6 +667,18 @@ export default function navigation ( props )
                         } else if ( route.name === 'Following' || route.name === 'Following')
                         {
                             iconName = focused ? 'person-add-sharp' : 'person-add-outline';
+                        } else if ( route.name === 'Follower' || route.name === 'Follower')
+                        {
+                            iconName = focused ? 'people-sharp' : 'people-outline';
+                        } else if ( route.name === 'Photo' || route.name === 'Photo')
+                        {
+                            iconName = focused ? 'images' : 'images-outline';
+                        }  else if ( route.name === 'Music' || route.name === 'Music')
+                        {
+                            iconName = focused ? 'musical-notes' : 'musical-notes-outline';
+                        } else if ( route.name === 'Video' || route.name === 'Video')
+                        {
+                            iconName = focused ? 'film' : 'film-outline';
                         } else if ( route.name === 'Settings' || route.name === 'Settings')
                         {
                             iconName = focused ? 'options' : 'options-outline';
@@ -356,9 +718,14 @@ export default function navigation ( props )
             >
 
                 <Tab.Screen name={language.lang === 'eng' ? "Timeline" : "Timeline"} component={HomeStackScreen} />
-                <Tab.Screen name={language.lang === 'eng' ? "Groups" : "Groups"} component={MainStackScreen}  />
-                <Tab.Screen name={language.lang === 'eng' ? "Likes" : "Likes"} component={ServicesStackScreen} />
-                <Tab.Screen name={language.lang === 'eng' ? "Following" : "Following"} component={ProgramsStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Friends" : "Friends"} component={FriendsStackScreen}  />
+                <Tab.Screen name={language.lang === 'eng' ? "Groups" : "Groups"} component={GroupsStackScreen}  />
+                <Tab.Screen name={language.lang === 'eng' ? "Likes" : "Likes"} component={LikesStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Following" : "Following"} component={FollowingStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Follower" : "Follower"} component={FollowerStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Photo" : "Photo"} component={PhotoStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Music" : "Music"} component={MusicStackScreen} />
+                <Tab.Screen name={language.lang === 'eng' ? "Video" : "Video"} component={VideoStackScreen} />
                 <Tab.Screen name={language.lang === 'eng' ? "Settings" : "Settings"} component={AboutsStackScreen} />
 
             </Tab.Navigator>

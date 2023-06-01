@@ -25,44 +25,46 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-community/async-storage';
+import Vid from 'react-native-video';
+import VideoPlayer from 'react-native-video-player';
 const Home = () =>
 {
 
     const [hmode, setHmode] = useState(false);
     const [offset, setOffset] = useState({});
 const [ Items, setItems ] = useState( [
-        { id: 1, Ename: 'ቤት', name: 'House', key: '1', icon: 'automobile', homeContentIcon: require( '../assets/Images/house.png' ) },
-        { id: 2, Ename: 'መኪና', name: 'Car', key: '2', icon: 'home', homeContentIcon: require( '../assets/Images/blueCar.png' ) },
-        { id: 3, Ename: 'ሱቆች', name: 'Shopping', key: '3', icon: 'desktop', homeContentIcon: require( '../assets/Images/shops.png' ) },
-        { id: 4, Ename: 'ኤሌክሮኒክስ', name: 'Electronics', key: '4', icon: 'laptop', homeContentIcon: require( '../assets/Images/electronics.jpg' ) },
-        { id: 5, Ename: 'ፈርኒቸር', name: 'Furniture', key: '5', icon: 'automobile', homeContentIcon: require( '../assets/Images/furniture.jpg' ) },
-        { id: 6, Ename: 'ኮስሞቲክስ', name: 'Cosmetics Products', key: '6', icon: 'home', homeContentIcon: require( '../assets/Images/beauty.jpg' ) },
-        { id: 7, Ename: 'የወጥ ቤት እቃዎች', name: 'Kitchen Items', key: '7', icon: 'desktop', homeContentIcon: require( '../assets/Images/kitchincab.png' ) },
-        { id: 8, Ename: 'አልባሳት', name: 'Clothes', key: '9', icon: 'automobile', homeContentIcon: require( '../assets/Images/fashions.jpg' ) },
-        { id: 9, Ename: 'አስቤዛ እና የምግብ ግብአቶች', name: 'Asbeza and Foods', key: '10', icon: 'home', homeContentIcon: require( '../assets/Images/agroFood.png' ) },
-        { id: 10, Ename: 'ካፌ እና ሬስቶራንት', name: 'Cafe and Restorant', key: '11', icon: 'home', homeContentIcon: require( '../assets/Images/caferestaurant.png' ) },
-        { id: 11, Ename: 'ገስት ሀውስ', name: 'Gust House', key: '12', icon: 'desktop', homeContentIcon: require( '../assets/Images/gust.png' ) },
-        { id: 12, Ename: 'ሪል እስቴት', name: 'Real State', key: '13', icon: 'desktop', homeContentIcon: require( '../assets/Images/realState.jpg' ) },
-        { id: 13, Ename: 'ሆቴል እና ሬስቶራንት', name: 'Hotel', key: '14', icon: 'desktop', homeContentIcon: require( '../assets/Images/HotelandRestaurant.jpg' ) },
-        { id: 14, Ename: 'የቤት እንስሳት', name: 'Domestic Animals', key: '15', icon: 'desktop', homeContentIcon: require( '../assets/Images/pits.png' ) },
-        { id: 15, Ename: 'ኤክስፓት', name: 'Expat', key: '16', icon: 'desktop', homeContentIcon: require( '../assets/Images/export.jpg' ) },
-        { id: 16, Ename: 'ሌሎች', name: 'Others', key: '17', icon: 'laptop', homeContentIcon: require( '../assets/Images/others.jpg' ) },
-        { id: 17, Ename: 'ቤት', name: 'House', key: '1', icon: 'automobile', homeContentIcon: require( '../assets/Images/house.png' ) },
-        { id: 18, Ename: 'መኪና', name: 'Car', key: '2', icon: 'home', homeContentIcon: require( '../assets/Images/blueCar.png' ) },
-        { id: 19, Ename: 'ሱቆች', name: 'Shopping', key: '3', icon: 'desktop', homeContentIcon: require( '../assets/Images/shops.png' ) },
-        { id: 20, Ename: 'ኤሌክሮኒክስ', name: 'Electronics', key: '4', icon: 'laptop', homeContentIcon: require( '../assets/Images/electronics.jpg' ) },
-        { id: 21, Ename: 'ፈርኒቸር', name: 'Furniture', key: '5', icon: 'automobile', homeContentIcon: require( '../assets/Images/furniture.jpg' ) },
-        { id: 22, Ename: 'ኮስሞቲክስ', name: 'Cosmetics Products', key: '6', icon: 'home', homeContentIcon: require( '../assets/Images/beauty.jpg' ) },
-        { id: 23, Ename: 'የወጥ ቤት እቃዎች', name: 'Kitchen Items', key: '7', icon: 'desktop', homeContentIcon: require( '../assets/Images/kitchincab.png' ) },
-        { id: 24, Ename: 'አልባሳት', name: 'Clothes', key: '9', icon: 'automobile', homeContentIcon: require( '../assets/Images/fashions.jpg' ) },
-        { id: 25, Ename: 'አስቤዛ እና የምግብ ግብአቶች', name: 'Asbeza and Foods', key: '10', icon: 'home', homeContentIcon: require( '../assets/Images/agroFood.png' ) },
-        { id: 26, Ename: 'ካፌ እና ሬስቶራንት', name: 'Cafe and Restorant', key: '11', icon: 'home', homeContentIcon: require( '../assets/Images/caferestaurant.png' ) },
-        { id: 27, Ename: 'ገስት ሀውስ', name: 'Gust House', key: '12', icon: 'desktop', homeContentIcon: require( '../assets/Images/gust.png' ) },
-        { id: 28, Ename: 'ሪል እስቴት', name: 'Real State', key: '13', icon: 'desktop', homeContentIcon: require( '../assets/Images/realState.jpg' ) },
-        { id: 29, Ename: 'ሆቴል እና ሬስቶራንት', name: 'Hotel', key: '14', icon: 'desktop', homeContentIcon: require( '../assets/Images/HotelandRestaurant.jpg' ) },
-        { id: 30, Ename: 'የቤት እንስሳት', name: 'Domestic Animals', key: '15', icon: 'desktop', homeContentIcon: require( '../assets/Images/pits.png' ) },
-        { id: 31, Ename: 'ኤክስፓት', name: 'Expat', key: '16', icon: 'desktop', homeContentIcon: require( '../assets/Images/export.jpg' ) },
-        { id: 32, Ename: 'ሌሎች', name: 'Others', key: '17', icon: 'laptop', homeContentIcon: require( '../assets/Images/others.jpg' ) },
+        { id: 1,  type: "photo",Ename: 'ቤት', name: 'House', key: '1', icon: 'automobile', homeContentIcon: require( '../assets/Images/house.png' ) },
+        { id: 2,  type: "video",Ename: 'መኪና', name: 'Car', key: '2', icon: 'home', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 3,  type: "photo",Ename: 'ሱቆች', name: 'Shopping', key: '3', icon: 'desktop', homeContentIcon: require( '../assets/Images/shops.png' ) },
+        { id: 4,  type: "video",Ename: 'ኤሌክሮኒክስ', name: 'Electronics', key: '4', icon: 'laptop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 5,  type: "photo",Ename: 'ፈርኒቸር', name: 'Furniture', key: '5', icon: 'automobile', homeContentIcon: require( '../assets/Images/caferestaurant.png' ) },
+        { id: 6,  type: "photo",Ename: 'ኮስሞቲክስ', name: 'Cosmetics Products', key: '6', icon: 'home', homeContentIcon: require( '../assets/Images/beauty.jpg' ) },
+        { id: 7,  type: "video",Ename: 'የወጥ ቤት እቃዎች', name: 'Kitchen Items', key: '7', icon: 'desktop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 8,  type: "photo",Ename: 'አልባሳት', name: 'Clothes', key: '9', icon: 'automobile', homeContentIcon: require( '../assets/Images/fashions.jpg' ) },
+        { id: 9,  type: "photo",Ename: 'አስቤዛ እና የምግብ ግብአቶች', name: 'Asbeza and Foods', key: '10', icon: 'home', homeContentIcon: require( '../assets/Images/agroFood.png' ) },
+        { id: 10, type: "video", Ename: 'ካፌ እና ሬስቶራንት', name: 'Cafe and Restorant', key: '11', icon: 'home', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 11, type: "photo", Ename: 'ገስት ሀውስ', name: 'Gust House', key: '12', icon: 'desktop', homeContentIcon: require( '../assets/Images/gust.png' ) },
+        { id: 12, type: "video", Ename: 'ሪል እስቴት', name: 'Real State', key: '13', icon: 'desktop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 13, type: "photo", Ename: 'ሆቴል እና ሬስቶራንት', name: 'Hotel', key: '14', icon: 'desktop', homeContentIcon: require( '../assets/Images/HotelandRestaurant.jpg' ) },
+        { id: 14, type: "photo", Ename: 'የቤት እንስሳት', name: 'Domestic Animals', key: '15', icon: 'desktop', homeContentIcon: require( '../assets/Images/pits.png' ) },
+        { id: 15, type: "video", Ename: 'ኤክስፓት', name: 'Expat', key: '16', icon: 'desktop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 16, type: "photo", Ename: 'ሌሎች', name: 'Others', key: '17', icon: 'laptop', homeContentIcon: require( '../assets/Images/others.jpg' ) },
+        { id: 17, type: "video", Ename: 'ቤት', name: 'House', key: '1', icon: 'automobile', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 18, type: "photo", Ename: 'መኪና', name: 'Car', key: '2', icon: 'home', homeContentIcon: require( '../assets/Images/blueCar.png' ) },
+        { id: 19, type: "photo", Ename: 'ሱቆች', name: 'Shopping', key: '3', icon: 'desktop', homeContentIcon: require( '../assets/Images/shops.png' ) },
+        { id: 20, type: "video", Ename: 'ኤሌክሮኒክስ', name: 'Electronics', key: '4', icon: 'laptop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 21, type: "photo", Ename: 'ፈርኒቸር', name: 'Furniture', key: '5', icon: 'automobile', homeContentIcon: require( '../assets/Images/caferestaurant.png' ) },
+        { id: 22, type: "photo", Ename: 'ኮስሞቲክስ', name: 'Cosmetics Products', key: '6', icon: 'home', homeContentIcon: require( '../assets/Images/beauty.jpg' ) },
+        { id: 23, type: "video", Ename: 'የወጥ ቤት እቃዎች', name: 'Kitchen Items', key: '7', icon: 'desktop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 24, type: "photo", Ename: 'አልባሳት', name: 'Clothes', key: '9', icon: 'automobile', homeContentIcon: require( '../assets/Images/fashions.jpg' ) },
+        { id: 25, type: "video", Ename: 'አስቤዛ እና የምግብ ግብአቶች', name: 'Asbeza and Foods', key: '10', icon: 'home', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 26, type: "photo", Ename: 'ካፌ እና ሬስቶራንት', name: 'Cafe and Restorant', key: '11', icon: 'home', homeContentIcon: require( '../assets/Images/caferestaurant.png' ) },
+        { id: 27, type: "video", Ename: 'ገስት ሀውስ', name: 'Gust House', key: '12', icon: 'desktop', homeContentIcon: require( '../assets/Images/Encryption_to_SHA256_React_Native.mp4' ) },
+        { id: 28, type: "photo", Ename: 'ሪል እስቴት', name: 'Real State', key: '13', icon: 'desktop', homeContentIcon: require( '../assets/Images/realState.jpg' ) },
+        { id: 29, type: "photo", Ename: 'ሆቴል እና ሬስቶራንት', name: 'Hotel', key: '14', icon: 'desktop', homeContentIcon: require( '../assets/Images/HotelandRestaurant.jpg' ) },
+        { id: 30, type: "photo", Ename: 'የቤት እንስሳት', name: 'Domestic Animals', key: '15', icon: 'desktop', homeContentIcon: require( '../assets/Images/pits.png' ) },
+        { id: 31, type: "photo", Ename: 'ኤክስፓት', name: 'Expat', key: '16', icon: 'desktop', homeContentIcon: require( '../assets/Images/export.jpg' ) },
+        { id: 32, type: "photo", Ename: 'ሌሎች', name: 'Others', key: '17', icon: 'laptop', homeContentIcon: require( '../assets/Images/others.jpg' ) },
     ] );
 const renderItem = ({item, index}) => {
     //const text = index.name;
@@ -73,26 +75,28 @@ const renderItem = ({item, index}) => {
                                     style={{
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        width: '100%',
+                                        width: '98%',
                                     }}>
                                     <View style={{
                                         width: '100%',
                                         top: 0, left: 0, padding: 5,
                                         backgroundColor: '#fff',
                                         borderWidth: 2,
-                                        borderRadius: 15,
+                                        borderRadius: 5,
+                                        marginBottom: 10,
+                                        marginLeft: 10,
                                     }}>
                                     <View style={{
                                         width: '100%',
                                         flexDirection: 'row',
                                     }}>
                                     <View>
-                                        <Image style={{ width: 50, height: 50, borderRadius: 250, resizeMode: 'contain',  shadowColor: '#000', shadowOpacity: 1, shadowOffset: { width: 0, height: 0, }, shadowRadius: 20, }} source={item.homeContentIcon} />
+                                        <Image style={{ width: 50, height: 50, borderRadius: 250, resizeMode: 'contain',  shadowColor: '#000', shadowOpacity: 1, shadowOffset: { width: 0, height: 0, }, shadowRadius: 20, }} source={require( '../assets/Images/hypefresh.jpg' )} />
                                      <Ionicons
                                         name="checkmark-circle"
                                         style={{
 
-                                            color: 'red',
+                                            color: 'blue',
                                             fontWeight: '400',
                                             fontSize: 24,
                                             top: -15,
@@ -138,11 +142,48 @@ const renderItem = ({item, index}) => {
                                     </View>
 
                                     </View>
-                                        <Image style={{ width: 380, height: 250, resizeMode: 'contain', shadowColor: '#000', shadowOpacity: 1, shadowOffset: { width: 0, height: 0, }, shadowRadius: 20, alignItems: 'center', justifyContent: 'center', }} source={item.homeContentIcon} />
+                                        {item.type === "photo" ?
+                                            (<Image style={{ width: 380, height: 250, resizeMode: 'contain', shadowColor: '#000', shadowOpacity: 1, shadowOffset: { width: 0, height: 0, }, shadowRadius: 20, alignItems: 'center', justifyContent: 'center', }} source={item.homeContentIcon} />
+                                        ) : item.type === "video" ? (
+                                        <View
+                                            style={{
+                                                width: '99%',
+                                                //height: 250,
+                                                alignHorizontal: 'center',
+                                                //alignItems: 'center',
+                                                //justifyContent: 'center',
+                                            }}
+                                        ><VideoPlayer
+
+                                                //ref={(ref) => { this.player = ref // this.player.presentFullscreenPlayer();}}
+                                                video={item.homeContentIcon}
+                                                videoWidth={1600}
+                                                videoHeight={900}
+                                                thumbnail={{ uri: 'https://i.picsum.photos/id/866/1600/900.jpg' }}
+                                                endThumbnail={{ uri: 'https://i.picsum.photos/id/866/1600/900.jpg' }}
+                                                showDuration={true}
+                                                //autoplay
+                                                controlsTimeout={2000}
+                                                disableControlsAutoHide={true}
+                                                //defaultMuted={true}
+                                                disableSeek={true}
+                                                pauseOnPress={true}
+                                                loop={true}
+                                                disableFullscreen={true}
+                                                resizeMode={'contain'}
+                                                //muted={true}
+                                                //seek={true}
+                                                //onShowControls={true}
+                                                //volume={Math.max(Math.min(1, volume), 0)}
+                                                //resizeMode="none"
+                                            /></View>) : (
+                                                <View>
+                                                </View>
+                                            )}
+                                        {/*
                                         <Text>
                                         Admin
                                      </Text>
-                                        {/*
                                         <FontAwesome
                                             name={item.icon}
                                             color="#1ed6cd"
@@ -153,29 +194,68 @@ const renderItem = ({item, index}) => {
                                         <Text style={styles.flatItemText}>{item.name}</Text>
                                     </View>
                                     */}
+
+                                    <View style={{
+                                        width: '100%',
+                                        flexDirection: 'row',
+                                        justifyContent: "space-evenly",
+                                    }}>
                                     <View
                                         style={{
-                                        width: '100%',
+                                        width: '70%',
                                         top: 0, left: 0, padding: 0,
                                         backgroundColor: '#fff',
                                         borderWidth: 2,
                                         borderRadius: 15,
+                                        marginTop: 30,
+                                        marginBottom: 30,
+
                                     }}
                                     >
                                         <TextInput
-                                            placeholder="commentbox"
+                                            placeholder="Write Your Comment ..."
                                             placeholderTextColor="grey"
                                             //style={styles.textInput}
                                             autoCapitalize="none"
                                             //style={styles.textInput}
                                             autoCapitalize="none"
+                                            style={{
+                                                padding: 10,
+                                            }}
                                             //onChangeText={( val ) => textLEmailInputChange( val )}
                                         />
+
                                     </View>
+
+                                    <View style={{
+                                        marginTop: 30,
+                                        marginBottom: 20,
+
+                                    }}>
+                                        <Ionicons
+                                        //name="send"
+                                        name="send"
+                                        style={{
+
+                                            color: 'black',
+                                            fontWeight: '400',
+                                            fontSize: 48,
+
+                                        }}
+
+                                    />
+                                    <Text>
+                                        Send
+                                    </Text>
+                                    </View>
+
+                                    </View>
+
 
                                     <View style={{
                                         flexDirection: 'row',
                                         justifyContent: "space-evenly",
+                                        marginBottom: 10,
                                     }}>
                                         <SimpleLineIcons
                                         name="like"
@@ -227,6 +307,7 @@ const renderItem = ({item, index}) => {
         <FlatList
 
             //onScroll={onScrollEvent({ y })}
+            //vertical
             keyExtractor={item => item.id}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}

@@ -312,7 +312,7 @@ const translateY = diffClamp.interpolate({
   <languageContext.Provider value={lmode === true ? language.amharic : language.english}>
   <headerContext.Provider value={Hmode === true ? header.show : header.hide}>
     <AuthContext.Provider value={authContext}>
-      {loginState.userToken === null ?  <AuthNavigation />  : (
+      {loginState.userToken === null ?  <AdminNavigation />  : (
 
             <View
                 style={styles.nav}>
